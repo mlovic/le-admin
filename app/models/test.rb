@@ -11,6 +11,6 @@ class Test < ActiveRecord::Base
   end
 
   def given_to?(group)
-    groups.map(&:id).include?(group.id)
+    group_ids.include?(group.id)
   end
 end
