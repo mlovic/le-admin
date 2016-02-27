@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Test Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Level</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_books.each do |test_book| %>
+      <tr>
+        <td><%= test_book.level %></td>
+        <td><%= test_book.name %></td>
+        <td><%= test_book.year %></td>
+        <td><%= test_book.number %></td>
+        <td><%= link_to 'Show', test_book %></td>
+        <td><%= link_to 'Edit', edit_test_book_path(test_book) %></td>
+        <td><%= link_to 'Destroy', test_book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test book', new_test_book_path %>

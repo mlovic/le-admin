@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @test_book.level %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @test_book.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @test_book.year %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @test_book.number %>
+</p>
+
+<%= link_to 'Edit', edit_test_book_path(@test_book) %> |
+<%= link_to 'Back', test_books_path %>
