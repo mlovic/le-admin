@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227174710) do
+ActiveRecord::Schema.define(version: 20160227180812) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "level"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20160227174710) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "groups_tests", id: false, force: :cascade do |t|
+    t.integer "groups_id"
+    t.integer "tests_id"
+  end
+
+  add_index "groups_tests", ["groups_id"], name: "index_groups_tests_on_groups_id"
+  add_index "groups_tests", ["tests_id"], name: "index_groups_tests_on_tests_id"
 
   create_table "test_books", force: :cascade do |t|
     t.string   "level"
@@ -32,9 +40,9 @@ ActiveRecord::Schema.define(version: 20160227174710) do
 
   create_table "tests", force: :cascade do |t|
     t.integer  "number"
-    t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "test_book_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
