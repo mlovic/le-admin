@@ -32,7 +32,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'bootstrap-generators', '~> 3.3.4'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :development, :test do
+  gem 'quiet_assets'
+  gem 'guard-rspec'
+  gem 'fabrication'
+  gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
