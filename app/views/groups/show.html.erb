@@ -1,19 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @group.name %></h2>
+
 <p>
   <strong>Level:</strong>
   <%= @group.level %>
 </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+<h3>Tests</h3>
+<% @group.tests %>
+  
+<% TestBook.where(level: @group.level).each do |book| %>
+  <h4><%= book.name %></h4>
+  <ul>
+  <% book.tests.each do |test| %>
+    <li>
+      <%= "Test #{test.number}" %>
+      <% if test.given_to?(@group) %>
+        <span class="glyphicon glyphicon-ok"></span>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
 
-<p>
-  <strong>Color:</strong>
-  <%= @group.color %>
-</p>
+
+
+
+
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
