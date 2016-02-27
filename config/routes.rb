@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'groups#index'
+
   resources :test_books
   resources :tests
   resources :groups
