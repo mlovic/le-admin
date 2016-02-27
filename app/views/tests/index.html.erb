@@ -2,7 +2,7 @@
 
 <h1>Listing Tests</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Number</th>
@@ -14,8 +14,7 @@
   <tbody>
     <% @tests.each do |test| %>
       <tr>
-        <td><%= test.number %></td>
-        <td><%= test.book_id %></td>
+        <td><%= test.name %></td>
         <td><%= link_to 'Show', test %></td>
         <td><%= link_to 'Edit', edit_test_path(test) %></td>
         <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
