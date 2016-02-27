@@ -15,7 +15,7 @@
   <ul>
   <% book.tests.each do |test| %>
     <li>
-      <%= "Test #{test.number}" %>
+      <%= link_to test_title(test), test_path(test), class: 'test-link' %>
       <% if test.given_to?(@group) %>
         <span class="glyphicon glyphicon-ok"></span>
       <% end %>
