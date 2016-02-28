@@ -21,6 +21,10 @@
       <% if test.given_to?(@group) %>
         <span class="glyphicon glyphicon-ok"></span>
         <span class="test-date">(<%= test.given_on(@group).strftime('%b %e') %>)</span>
+        <%#TODO use test delivery object instead?%>
+        <% if test.note_for(@group) %>
+          <span>  -  <%= test&.note_for(@group) %></span>
+        <% end %>
       <% end %>
     </li>
   <% end %>

@@ -21,4 +21,9 @@ class Test < ActiveRecord::Base
     group.received_on(self)
   end
 
+  def note_for(group)
+    # TODO extract to own method
+    groups_tests.find_by(group_id: group.id)&.note
+  end
+
 end
