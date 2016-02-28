@@ -11,7 +11,14 @@ class Test < ActiveRecord::Base
     test_book_id
   end
 
+  # TODO should live here or in Group?
   def given_to?(group)
-    group_ids.include?(group.id)
+    group.received?(self)
   end
+
+  def given_on(group)
+    return unless given_to?(group)
+    group.received_on(self)
+  end
+
 end
