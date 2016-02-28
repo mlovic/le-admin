@@ -20,6 +20,7 @@
       <%= link_to test_title(test), test_path(test), class: 'test-link' %>
       <% if test.given_to?(@group) %>
         <span class="glyphicon glyphicon-ok"></span>
+        <span class="test-date">(<%= test.given_on(@group).strftime('%b %e') %>)</span>
       <% end %>
     </li>
   <% end %>
