@@ -1,3 +1,4 @@
 class Group < ActiveRecord::Base
-  has_and_belongs_to_many :tests
+  has_many :groups_tests # necessary?
+  has_many :tests, through: :groups_tests
 end

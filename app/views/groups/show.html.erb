@@ -10,6 +10,8 @@
 <h3>Tests</h3>
 <% @group.tests %>
   
+<%# TODO make partial %>
+
 <% TestBook.where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
   <ul>

@@ -1,6 +1,7 @@
 class Test < ActiveRecord::Base
   belongs_to :test_book
-  has_and_belongs_to_many :groups
+  has_many :groups_tests # necessary?
+  has_many :groups, through: :groups_tests
 
   def name
     test_book.name + ' Test ' + number.to_s
