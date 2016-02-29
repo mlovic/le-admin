@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'groups_tests/create'
-
-  get 'groups_tests/update'
-
-  get 'groups_tests/destroy'
-
   root 'groups#index'
 
+  resources :groups_tests, only: [:create, :update, :destroy]
   resources :test_books
   resources :tests
   resources :groups
