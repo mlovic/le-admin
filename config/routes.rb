@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'groups_tests/create'
+
+  get 'groups_tests/update'
+
+  get 'groups_tests/destroy'
+
   root 'groups#index'
 
   resources :test_books
