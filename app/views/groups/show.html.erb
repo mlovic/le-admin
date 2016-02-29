@@ -2,13 +2,11 @@
 
 <h2><%= @group.name %></h2>
 
-<p>
-  <strong>Level:</strong>
-  <%= @group.level %>
-</p>
-
-<h3>Tests</h3>
-<% @group.tests %>
+<%= form_for GroupsTest.new, url: {action: 'create'} do |f| %>
+<%#TODO later divide into 2 selects, book and test num?%>
+  <%= f.collection_select(:test_id, Test.all, :id, :name, prompt: false) %>
+  <%= f.submit %>
+<% end %>
   
 <%# TODO make partial %>
 
@@ -30,10 +28,6 @@
   <% end %>
   </ul>
 <% end %>
-
-
-
-
 
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
