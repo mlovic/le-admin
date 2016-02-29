@@ -26,13 +26,16 @@ class GroupsTestsController < ApplicationController
   def create
     @groups_test = GroupsTest.new(groups_test_params)
 
+    group_id = groups_test_params[:group_id].to_i
+    @group = Group.find(group_id)
+
     respond_to do |format|
       if @groups_test.save
-        format.html { redirect_to @groups_test, notice: 'Groups test was successfully created.' }
-        format.json { render :show, status: :created, location: @groups_test }
+        format.html { redirect_to @group, notice: 'Groups test was successfully created.' }
+        #format.json { render :show, status: :created, location: @groups_test }
       else
-        format.html { render :new }
-        format.json { render json: @groups_test.errors, status: :unprocessable_entity }
+        #format.html { render :new }
+        #format.json { render json: @groups_test.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +72,6 @@ class GroupsTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def groups_test_params
-      params.fetch(:groups_test, {})
+      params.require(:groups_test).permit(:test_id, :group_id)
     end
 end

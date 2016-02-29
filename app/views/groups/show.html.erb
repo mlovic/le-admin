@@ -2,9 +2,10 @@
 
 <h2><%= @group.name %></h2>
 
-<%= form_for GroupsTest.new, url: {action: 'create'} do |f| %>
+<%= form_for GroupsTest.new, url: groups_tests_path do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
   <%= f.collection_select(:test_id, Test.all, :id, :name, prompt: false) %>
+  <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.submit %>
 <% end %>
   
