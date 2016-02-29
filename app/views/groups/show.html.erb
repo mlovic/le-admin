@@ -4,14 +4,14 @@
 
 <%= form_for GroupsTest.new, url: groups_tests_path do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
-  <%= f.collection_select(:test_id, Test.all, :id, :name, prompt: false) %>
+  <%= f.collection_select(:test_id, Test.not_given_to(@group), :id, :name, prompt: false) %>
   <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.submit %>
 <% end %>
   
 <%# TODO make partial %>
 
-<% TestBook.where(level: @group.level).each do |book| %>
+<% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
   <ul>
   <% book.tests.each do |test| %>

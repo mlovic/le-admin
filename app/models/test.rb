@@ -3,6 +3,17 @@ class Test < ActiveRecord::Base
   has_many :groups_tests # necessary?
   has_many :groups, through: :groups_tests
 
+  #scope :outer_join_groups, -> { joins("LEFT JOIN groups ON test_id = 
+  #scope :not_given_to, -> (group) { joins(:groups_tests).joins(:groups).where.not('groups.id = ?', group) }
+
+  def self.not_given_to(group)
+    #joins(:groups_tests).joins(:groups).where.not('groups.id = ?', group)
+    # TODO refactor to use joins
+    Test.all.reject do |test|
+      test.given_to?(group)
+    end
+  end
+
   def name
     test_book.name + ' Test ' + number.to_s
   end
