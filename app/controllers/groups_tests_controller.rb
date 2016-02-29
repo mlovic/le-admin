@@ -34,7 +34,7 @@ class GroupsTestsController < ApplicationController
         format.html { redirect_to @group, notice: 'Groups test was successfully created.' }
         #format.json { render :show, status: :created, location: @groups_test }
       else
-        #format.html { render :new }
+        format.html { redirect_to @group, alert: 'Groups test not successfully created.' }
         #format.json { render json: @groups_test.errors, status: :unprocessable_entity }
       end
     end
