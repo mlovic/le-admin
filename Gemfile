@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-generators', '~> 3.3.4'
+gem 'bootstrap_form'
 
 group :test do
   gem 'rspec-rails'

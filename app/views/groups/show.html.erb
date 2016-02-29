@@ -2,15 +2,17 @@
 
 <h2><%= @group.name %></h2>
 
-<%= form_for GroupsTest.new, url: groups_tests_path do |f| %>
+<%= bootstrap_form_for GroupsTest.new, url: groups_tests_path, layout: :inline do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
-  <%= f.collection_select(:test_id, Test.not_given_to(@group), :id, :name, prompt: false) %>
+  <%= f.collection_select :test_id, Test.not_given_to(@group), :id, :name, prompt: false, hide_label: true %>
   <%= f.hidden_field :group_id, value: @group.id %>
-  <%= f.submit %>
+  <%= f.primary 'Add Test' %>
 <% end %>
   
 <%# TODO make partial %>
 
+<%#nested ul's%>
+  
 <% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
   <ul>
