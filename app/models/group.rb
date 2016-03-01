@@ -12,4 +12,10 @@ class Group < ActiveRecord::Base
     test_ids.include?(test.id)
   end
 
+  def last_test
+    # TODO try without calling TEST. just group.where...
+    return if tests.empty?
+    Test.includes(:groups_tests, :groups).where('groups.id = ? ', self.id).order('groups_tests.test_date DESC').first.name
+  end
+
 end

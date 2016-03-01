@@ -34,4 +34,12 @@ RSpec.describe Group do
     it 'returns nil when not given' # or should it raise exception?
 
   end
+
+  describe '#last_test' do
+    it 'returns last test' do
+      #group.give_tests << Test.create test_date
+      
+    end
+    
+  end
 end
