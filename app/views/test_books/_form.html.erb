@@ -1,4 +1,4 @@
-<%= form_for(@test_book) do |f| %>
+<%= bootstrap_form_for(@test_book, layout: :horizontal, html: { id: 'test-book-form' }) do |f| %>
   <% if @test_book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@test_book.errors.count, "error") %> prohibited this test_book from being saved:</h2>
@@ -11,23 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :level %><br>
-    <%= f.text_field :level %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.text_field :year %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_field :level %>
+  <%= f.text_field :name %>
+  <%= f.text_field :year %>
+  <%= f.number_field :number %>
+  <%= f.primary 'Add Test Book' %>
 <% end %>
