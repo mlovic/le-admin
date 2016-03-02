@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @group.name %></h2>
+<h2 class="show-page-title"><%= @group.name %></h2>
 
 <%= bootstrap_form_for GroupsTest.new, url: groups_tests_path, layout: :inline do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
@@ -12,6 +12,8 @@
 <%# TODO make partial %>
 
 <%#nested ul's%>
+  
+<div id="group-test-list">
   
 <% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
@@ -31,6 +33,8 @@
   <% end %>
   </ul>
 <% end %>
+
+</div>
 
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
