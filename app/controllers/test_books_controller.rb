@@ -26,6 +26,10 @@ class TestBooksController < ApplicationController
   def create
     @test_book = TestBook.new(test_book_params)
 
+    params[:number_of_tests].to_i.times do |n|
+      @test_book.tests << Test.create(number: n)
+    end
+
     respond_to do |format|
       if @test_book.save
         format.html { redirect_to @test_book, notice: 'Test book was successfully created.' }
