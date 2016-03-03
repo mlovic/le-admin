@@ -27,7 +27,7 @@ class TestBooksController < ApplicationController
     @test_book = TestBook.new(test_book_params)
 
     params[:number_of_tests].to_i.times do |n|
-      @test_book.tests << Test.create(number: n)
+      @test_book.tests << Test.create(number: n+1)
     end
 
     respond_to do |format|
