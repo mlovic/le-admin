@@ -8,6 +8,7 @@
   <%= f.collection_select :test_id, Test.not_given_to(@group), :id, :name, prompt: false, hide_label: true %>
   <%= f.date_select :test_date, discard_year: true, use_short_month: true, hide_label: true %>
   <%#<input class="datepicker" type="text" data-provide='datepicker' >%>
+  <%= f.check_box :only_listening, checked: false %>
   <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.primary 'Add Test' %>
 <% end %>
@@ -27,7 +28,12 @@
     <li>
       <%= link_to test_title(test), test_path(test), class: 'test-link' %>
       <% if test.given_to?(@group) %>
-        <span class="glyphicon glyphicon-ok"></span>
+        <%#TODO figure out interface for group_tests%>
+        <% if GroupsTest.find_by(group_id: @group.id, test_id: test.id).only_listening? %>
+          <span class="boldest"><strong> L</strong></span>
+        <% else %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
         <span class="test-date">(<%= test.given_on(@group).strftime('%b %e') %>)</span>
         <%#TODO use test delivery object instead?%>
         <% if test.note_for(@group) %>

@@ -72,7 +72,6 @@ class GroupsTestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def groups_test_params
-      params.require(:groups_test).permit(:test_id, :group_id, :"test_date(1i)", :"test_date(2i)", :"test_date(3i)")
-
+      params.require(:groups_test).permit(:test_id, :group_id, :only_listening, :"test_date(1i)", :"test_date(2i)", :"test_date(3i)")
     end
 end
