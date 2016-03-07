@@ -34,6 +34,7 @@ gem 'unicorn'
 
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'bootstrap_form'
+gem 'bootstrap-datepicker-rails'
 
 group :test do
   gem 'rspec-rails'

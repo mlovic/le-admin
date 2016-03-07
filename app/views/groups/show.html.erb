@@ -5,6 +5,8 @@
 <%= bootstrap_form_for GroupsTest.new, url: groups_tests_path, layout: :inline do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
   <%= f.collection_select :test_id, Test.not_given_to(@group), :id, :name, prompt: false, hide_label: true %>
+  <%#<%= f.date_select :test_date, discard_year: true, use_short_month: true, hide_label: true %>
+  <input class="datepicker" type="text" data-provide='datepicker' >
   <%= f.hidden_field :group_id, value: @group.id %>
   <%= f.primary 'Add Test' %>
 <% end %>
@@ -15,6 +17,7 @@
   
 <div id="group-test-list">
   
+<%# TODO make level into scope to deal with group not having a level%>
 <% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
   <ul>
