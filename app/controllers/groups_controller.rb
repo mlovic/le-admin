@@ -10,6 +10,8 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    # TODO consolidate with set_group method
+    @group = Group.includes(:tests).find(params[:id])
   end
 
   # GET /groups/new
