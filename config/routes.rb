@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'groups#index'
 
-  resources :groups_tests, only: [:create, :update, :destroy]
+  resources :test_deliveries, only: [:create, :update, :destroy]
   resources :test_books
   resources :tests
   resources :groups

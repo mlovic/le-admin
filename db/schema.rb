@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307183346) do
+ActiveRecord::Schema.define(version: 20160307222301) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "level"
@@ -21,17 +21,6 @@ ActiveRecord::Schema.define(version: 20160307183346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "groups_tests", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "test_id"
-    t.date    "test_date"
-    t.string  "note"
-    t.boolean "only_listening", default: false
-  end
-
-  add_index "groups_tests", ["group_id"], name: "index_groups_tests_on_group_id"
-  add_index "groups_tests", ["test_id"], name: "index_groups_tests_on_test_id"
-
   create_table "test_books", force: :cascade do |t|
     t.string   "level"
     t.string   "name"
@@ -40,6 +29,17 @@ ActiveRecord::Schema.define(version: 20160307183346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "test_deliveries", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "test_id"
+    t.date    "test_date"
+    t.string  "note"
+    t.boolean "only_listening", default: false
+  end
+
+  add_index "test_deliveries", ["group_id"], name: "index_test_deliveries_on_group_id"
+  add_index "test_deliveries", ["test_id"], name: "index_test_deliveries_on_test_id"
 
   create_table "tests", force: :cascade do |t|
     t.integer  "number"

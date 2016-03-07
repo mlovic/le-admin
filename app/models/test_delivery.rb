@@ -1,4 +1,4 @@
-class GroupsTest < ActiveRecord::Base
+class TestDelivery < ActiveRecord::Base
   belongs_to :test
   belongs_to :group
 

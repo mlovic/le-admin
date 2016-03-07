@@ -3,7 +3,7 @@
 <h2 class="show-page-title"><%= @group.name %></h2>
 
 <%#TODO hide from%>
-<%= bootstrap_form_for GroupsTest.new, url: groups_tests_path, layout: :inline do |f| %>
+<%= bootstrap_form_for TestDelivery.new, url: test_deliveries_path, layout: :inline do |f| %>
 <%#TODO later divide into 2 selects, book and test num?%>
   <%= f.collection_select :test_id, Test.not_given_to(@group), :id, :name, prompt: false, hide_label: true %>
   <%= f.date_select :test_date, discard_year: true, use_short_month: true, hide_label: true %>
@@ -29,7 +29,7 @@
       <%= link_to test_title(test), test_path(test), class: 'test-link' %>
       <% if test.given_to?(@group) %>
         <%#TODO figure out interface for group_tests%>
-        <% if GroupsTest.find_by(group_id: @group.id, test_id: test.id).only_listening? %>
+        <% if TestDelivery.find_by(group_id: @group.id, test_id: test.id).only_listening? %>
           <span class="boldest"><strong> L</strong></span>
         <% else %>
           <span class="glyphicon glyphicon-ok"></span>

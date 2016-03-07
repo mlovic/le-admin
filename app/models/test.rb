@@ -1,13 +1,13 @@
 class Test < ActiveRecord::Base
   belongs_to :test_book
-  has_many :groups_tests # necessary?
-  has_many :groups, through: :groups_tests
+  has_many :test_deliveries # necessary?
+  has_many :groups, through: :test_deliveries
 
   #scope :outer_join_groups, -> { joins("LEFT JOIN groups ON test_id = 
-  #scope :not_given_to, -> (group) { joins(:groups_tests).joins(:groups).where.not('groups.id = ?', group) }
+  #scope :not_given_to, -> (group) { joins(:test_deliveries).joins(:groups).where.not('groups.id = ?', group) }
 
   def self.not_given_to(group)
-    #joins(:groups_tests).joins(:groups).where.not('groups.id = ?', group)
+    #joins(:test_deliveries).joins(:groups).where.not('groups.id = ?', group)
     # TODO refactor to use joins
     Test.all.reject do |test|
       test.given_to?(group)
@@ -34,7 +34,7 @@ class Test < ActiveRecord::Base
 
   def note_for(group)
     # TODO extract to own method
-    groups_tests.find_by(group_id: group.id)&.note
+    test_deliveries.find_by(group_id: group.id)&.note
   end
 
 end
