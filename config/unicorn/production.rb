@@ -10,11 +10,11 @@ working_directory app_dir
  timeout 30
 
 # Set up socket location
- listen "tmp/unicorn.sock", :backlog => 64
+ listen "#{app_dir}/tmp/sockets/unicorn.sock", :backlog => 64
 
 # Logging
- stderr_path "log/unicorn.stderr.log"
- stdout_path "log/unicorn.stdout.log"
+ stderr_path "#{app_dir}/log/unicorn.stderr.log"
+ stdout_path "#{app_dir}/log/unicorn.stdout.log"
 
 # Set master PID location
- pid "tmp/pids/unicorn.pid"
+ pid "#{app_dir}/tmp/pids/unicorn.pid"
