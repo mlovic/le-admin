@@ -10,7 +10,7 @@ working_directory app_dir
  timeout 30
 
 # Set up socket location
- listen "tmp/sockets/unicorn.sock", :backlog => 64
+ listen "tmp/unicorn.sock", :backlog => 64
 
 # Logging
  stderr_path "log/unicorn.stderr.log"
