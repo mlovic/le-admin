@@ -72,7 +72,6 @@ class TestDeliveriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_delivery_params
-      # TODO test note before committing
       params.require(:test_delivery).permit(:test_id, :group_id, :only_listening, :note, :"test_date(1i)", :"test_date(2i)", :"test_date(3i)")
     end
 end

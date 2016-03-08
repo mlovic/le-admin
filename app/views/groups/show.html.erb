@@ -22,6 +22,7 @@
   
 <%# TODO make level into scope to deal with group not having a level%>
 <%#TODO also add testbooks from other levels which may have also been delivered%>
+<%#TODO show edit icon on hover and lead to edit action%>
 <% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
   <h4><%= book.name %></h4>
   <ul>
