@@ -10,6 +10,7 @@
   <%#<input class="datepicker" type="text" data-provide='datepicker' >%>
   <%= f.check_box :only_listening, checked: false %>
   <%= f.hidden_field :group_id, value: @group.id %>
+  <%= f.text_area :note %>
   <%= f.primary 'Add Test' %>
 <% end %>
   
