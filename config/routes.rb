@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :students
   root 'groups#index'
 
   resources :test_deliveries, only: [:create, :update, :destroy]
