@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   has_many :test_deliveries # necessary?
   has_many :tests, through: :test_deliveries
+  has_many :students
 
   # TODO should live here or in Test?
   def received_on(test)
