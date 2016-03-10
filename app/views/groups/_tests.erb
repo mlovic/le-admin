@@ -1,0 +1,32 @@
+
+<div id="group-test-list">
+  
+<%#nested ul's%>
+<%# TODO make level into scope to deal with group not having a level%>
+<%#TODO also add testbooks from other levels which may have also been delivered%>
+<%#TODO show edit icon on hover and lead to edit action%>
+<% TestBook.includes(:tests).where(level: @group.level).each do |book| %>
+  <h4><%= book.name %></h4>
+  <ul>
+  <% book.tests.each do |test| %>
+    <li>
+      <%= link_to test_title(test), test_path(test), class: 'test-link' %>
+      <% if test.given_to?(@group) %>
+        <%#TODO figure out interface for group_tests%>
+        <% if TestDelivery.find_by(group_id: @group.id, test_id: test.id).only_listening? %>
+          <span class="boldest"><strong> L</strong></span>
+        <% else %>
+          <span class="glyphicon glyphicon-ok"></span>
+        <% end %>
+        <span class="test-date">(<%= test.given_on(@group).strftime('%b %e') %>)</span>
+        <%#TODO use test delivery object instead?%>
+        <% if test.note_for(@group) %>
+          <span>  -  <%= test&.note_for(@group) %></span>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+</div>

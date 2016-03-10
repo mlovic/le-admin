@@ -40,6 +40,21 @@ li {
   padding-left: 20px;
 }
 
+.class-date-list {
+  margin-top: 30px;
+  border-top: medium solid lightgrey;
+  max-width: 400px;
+}
+
+#new_test_delivery {
+  display: none;
+}
+
+.class-date {
+  border: none;
+  border-bottom: thin solid lightgrey;
+}
+
 /*.datepicker {*/
   /*max-width: 100px;*/
 /*}*/

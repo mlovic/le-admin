@@ -7,3 +7,7 @@ $(document).ready ->
     "format": "M d"
 
   $('.datepicker').datepicker 'update', new Date()
+
+  $("#add-test-button").click ->
+    $(@).hide()
+    $("#new_test_delivery").show()
